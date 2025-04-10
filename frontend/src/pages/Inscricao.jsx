@@ -53,9 +53,10 @@ const Inscricao = () => {
 
     try {
       const inscricoes = vagasSelecionadas.map(vaga => ({
-        fk_candidato_cpf: candidatoSelecionado.pk_cand_cpf,
-        fk_vaga_codigo: vaga
+        fk_cand_cpf: candidatoSelecionado.pk_cand_cpf,
+        fk_vaga_id: vaga
       }));
+      
 
       await Promise.all(inscricoes.map(inscricao =>
         axios.post('http://localhost:4000/inscricoes', inscricao)
@@ -94,15 +95,16 @@ const Inscricao = () => {
           <h6>Vagas Disponíveis</h6>
           <ListGroup className="mb-3">
             {vagas.map(vaga => {
-              const jaInscrito = inscricoesRealizadas.some(i => i.fk_vaga_codigo === vaga.pk_vaga_codigo);
+              const jaInscrito = inscricoesRealizadas.some(i => i.fk_vaga_id === vaga.vaga_id);
+
               return (
-                <ListGroup.Item key={vaga.pk_vaga_codigo}>
+                <ListGroup.Item key={vaga.vaga_id}>
                   <Form.Check
                     type="checkbox"
                     label={`${vaga.vaga_cargo} - ${vaga.vaga_cidade}`}
-                    checked={vagasSelecionadas.includes(vaga.pk_vaga_codigo)}
+                    checked={vagasSelecionadas.includes(vaga.vaga_id)}
                     disabled={jaInscrito}
-                    onChange={() => handleSelecionarVaga(vaga.pk_vaga_codigo)}
+                    onChange={() => handleSelecionarVaga(vaga.vaga_id)}
                   />
                   {jaInscrito && <small className="text-danger ms-2">Já inscrito</small>}
                 </ListGroup.Item>
