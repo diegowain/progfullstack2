@@ -5,7 +5,7 @@ import NavigationBar from './Navbar';
 import CadastrarCandidato from '../pages/CadastrarCandidato';
 import CadastrarVaga from '../pages/CadastrarVaga';
 import Inscricao from '../pages/Inscricao';
-import ListarVagas from '../pages/ListarVagas';
+
 
 const App = () => {
   return (
@@ -13,10 +13,10 @@ const App = () => {
       <NavigationBar />
       <div className="container mt-4">
         <Routes>
-          <Route path="/candidato" element={<CadastrarCandidato />} />
-          <Route path="/vaga" element={<CadastrarVaga />} />
-          <Route path="/inscricao" element={<Inscricao />} />
-          <Route path="/vagasdisponiveis" element={<ListarVagas />} />
+          <Route path="/candidatos" element={<CadastrarCandidato />} />
+          <Route path="/vagas" element={<CadastrarVaga />} />
+          <Route path="/inscricoes" element={<Inscricao />} />
+
           <Route path="/" element={<h2>Bem-vindo ao Sistema de Recrutamento</h2>} />
         </Routes>
       </div>
