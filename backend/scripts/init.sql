@@ -18,3 +18,13 @@ CREATE TABLE IF NOT EXISTS vagas (
   vaga_quantidade INT,
   vaga_descricao TEXT
 );
+
+CREATE TABLE IF NOT EXISTS inscricoes (
+  id_inscricao INT AUTO_INCREMENT PRIMARY KEY,
+  fk_cand_cpf VARCHAR(11),
+  fk_vaga_id INT,
+  data_inscricao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (fk_cand_cpf) REFERENCES candidatos(pk_cand_cpf) ON DELETE CASCADE,
+  FOREIGN KEY (fk_vaga_id) REFERENCES vagas(pk_vaga_id) ON DELETE CASCADE,
+  UNIQUE (fk_cand_cpf, fk_vaga_id) 
+);
