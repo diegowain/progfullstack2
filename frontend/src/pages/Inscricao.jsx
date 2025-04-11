@@ -122,7 +122,7 @@ const Inscricao = () => {
             <ul>
   {inscricoesRealizadas.map((inscricao) => (
     <li key={`${inscricao.fk_cand_cpf}-${inscricao.fk_vaga_id}`}>
-      {inscricao.vaga_cargo || `Vaga ${inscricao.fk_vaga_id}`}
+      {inscricao.vaga_nome || `Vaga ${inscricao.fk_vaga_id}`}
     </li>
   ))}
 </ul>
