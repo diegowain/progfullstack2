@@ -1,4 +1,6 @@
 const db = require('./db');
+const VagaDAO = require('../DAO/vagaDAO');
+module.exports = VagaDAO;
 
 const Vaga = {
   getAll: (callback) => {

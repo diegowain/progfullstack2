@@ -1,8 +1,11 @@
 const Inscricao = require('../models/inscricaoModel');
 
 exports.getInscricoes = (req, res) => {
-  Inscricao.getAll((err, results) => {
-    if (err) return res.status(500).json(err);
+  const cpf = req.params.cpf;
+  Inscricao.getByCpf(cpf, (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Erro ao buscar inscrições.' });
+    }
     res.json(results);
   });
 };

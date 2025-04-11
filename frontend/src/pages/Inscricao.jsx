@@ -120,10 +120,13 @@ const Inscricao = () => {
           <div className="mt-4">
             <h6>Vagas já escolhidas</h6>
             <ul>
-              {inscricoesRealizadas.map((inscricao, index) => (
-                <li key={index}>{inscricao.vaga_nome || `Vaga ${inscricao.fk_vaga_codigo}`}</li>
-              ))}
-            </ul>
+  {inscricoesRealizadas.map((inscricao) => (
+    <li key={inscricao.id_inscricao}>
+      {inscricao.vaga_cargo || `Vaga ${inscricao.fk_vaga_id}`}
+    </li>
+  ))}
+</ul>
+
           </div>
         </>
       )}
